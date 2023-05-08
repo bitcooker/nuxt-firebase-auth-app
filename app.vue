@@ -51,7 +51,7 @@ export default {
           this.email,
           this.password
         );
-        this.$router.push('/aftersignup')
+        this.$router.push('/dashboard')
       } catch (e) {
         handleError(e);
       }
