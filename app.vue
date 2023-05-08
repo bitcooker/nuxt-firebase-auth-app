@@ -37,7 +37,25 @@
 </template>
 
 <script>
-export default {
+import { handleError } from 'nuxt/dist/app/compat/capi';
 
+export default {
+  data: ()=>({
+    email: "",
+    password: "",
+  }),
+  methods: {
+    async createUser() {
+      try {
+        await this.$fire.auth.createUserWithEmailAndPassword(
+          this.email,
+          this.password
+        );
+        this.$router.push('/aftersignup')
+      } catch (e) {
+        handleError(e);
+      }
+    }
+  }
 }
 </script>
